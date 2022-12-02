@@ -1,5 +1,8 @@
 FROM openjdk:8-alpine
 
+ENV CONTAINER_TIMEZONE="Asia/Calcutta"
+RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
+
 # Required for starting application up.
 RUN apk update && apk add /bin/sh
 
